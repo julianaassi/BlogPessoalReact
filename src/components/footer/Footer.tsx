@@ -1,8 +1,11 @@
-import { FacebookLogo, InstagramLogo, LinkedinLogo } from '@phosphor-icons/react'
+import { FacebookLogo,
+    InstagramLogo,
+    LinkedinLogo
+} from '@phosphor-icons/react'
 
 function Footer() {
 
-    let data = new Date().getFullYear()
+    const data = new Date().getFullYear()
 
     return (
         <>
