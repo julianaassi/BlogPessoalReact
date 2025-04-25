@@ -1,33 +1,45 @@
-import { FacebookLogo,
-    InstagramLogo,
-    LinkedinLogo
-} from '@phosphor-icons/react'
+import { FacebookLogo, InstagramLogo, LinkedinLogo } from '@phosphor-icons/react'
+import { ReactNode, useContext } from 'react'
+import { AuthContext } from '../../context/AuthContext'
+
 
 function Footer() {
 
     const data = new Date().getFullYear()
 
-    return (
-        <>
+    const { usuario } = useContext(AuthContext)
+
+    let component: ReactNode
+
+    if (usuario.token !== "") {
+
+        component = (
+
             <div className="flex justify-center bg-indigo-900 text-white">
                 <div className="container flex flex-col items-center py-4">
                     <p className='text-xl font-bold'>
-                            Blog Pessoal Generation | Copyright: {data}
-                        </p>
+                        Blog Pessoal Generation | Copyright: {data}
+                    </p>
                     <p className='text-lg'>Acesse nossas redes sociais</p>
                     <div className='flex gap-2'>
-	<a href="https://www.linkedin.com/in/juliana-assi-3a8792232/" target="_blank">
-    <LinkedinLogo size={48} weight='bold' />
-    </a>
-    <a href="https://www.instagram.com/julianaramosassi" target="_blank">
-    <InstagramLogo size={48} weight='bold' />
-    </a>
-    <a href="https://www.facebook.com/juliana.ramos.54390876" target="_blank">
-    <FacebookLogo size={48} weight='bold' />
-	</a>
-</div>
+                        <a href="https://www.linkedin.com/school/generationbrasil" target="_blank">
+                            <LinkedinLogo size={48} weight='bold' />
+                        </a>
+                        <a href="https://www.instagram.com/generationbrasil" target="_blank">
+                            <InstagramLogo size={48} weight='bold' />
+                        </a>
+                        <a href="https://www.facebook.com/generationbrasil" target="_blank">
+                            <FacebookLogo size={48} weight='bold' />
+                        </a>
+                    </div>
                 </div>
             </div>
+
+        )
+    }
+    return (
+        <>
+            { component }
         </>
     )
 }
